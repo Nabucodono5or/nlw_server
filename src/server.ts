@@ -1,10 +1,5 @@
 import express from "express";
-
-const app = express();
-
-app.use(express.json());
-
-app.listen(3333);
+import routes from "./routes";
 
 // Nós temos os métodos GET, POST, DELETE, PUT
 // GET - usado por browsers, realiza requests e responde com os dados pedidos
@@ -17,23 +12,9 @@ app.listen(3333);
 // body - o corpo da request, onde a maioria dos dados iráo de ficar.
 // query - propriedades enviadas pela rota (endereço) para filtrar dados
 
-app.get("/users", (request, response) => {
-  console.log(request.query);
+const app = express();
 
-  const users = [
-    {
-      name: "Vinicius",
-      age: 22,
-    },
-    {
-      name: "Jefferson",
-      age: 29,
-    },
-    {
-      name: "Jonathan",
-      age: 29,
-    },
-  ];
+app.use(express.json());
+app.use(routes);
 
-  return response.json(users);
-});
+app.listen(3333);
