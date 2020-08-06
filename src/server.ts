@@ -1,5 +1,6 @@
 import express from "express";
 import routes from "./routes";
+import cors from "cors";
 
 // Nós temos os métodos GET, POST, DELETE, PUT
 // GET - usado por browsers, realiza requests e responde com os dados pedidos
@@ -14,7 +15,7 @@ import routes from "./routes";
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use(routes);
-
 app.listen(3333);
